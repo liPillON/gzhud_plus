@@ -1,0 +1,5 @@
+//IndexFont: Full Fontset
+gzpFNT_IDX
+{
+	TEMPLATE gzpIDX%02d
+}

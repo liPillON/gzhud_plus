@@ -20,7 +20,7 @@ OptionMenu gzpMNU_MAIN
 	Option "Keep Aspect Ratio", hud_aspectscale, YesNo
 	StaticText ""
 	StaticText "MOD Options", Gold
-	Option "$gzpLBL_OPTSTATS", gzpHUD_LevelInfo, YesNo
+	Option "Show Level Info", gzpHUD_LevelInfo, YesNo
 }
 
 

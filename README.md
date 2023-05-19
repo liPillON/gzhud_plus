@@ -11,7 +11,6 @@ Features:
 - tweaked UsesAmmo/UsesSecondaryAmmo support
 - InventoryBar/SelectedInventory support
 - optional Level Stats (off by default)
-- classic automap colors
 - hidden StatusBar in automap
 
 

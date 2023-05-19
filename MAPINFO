@@ -1,9 +1,0 @@
-automap
-{
-  base = "DOOM"
-}
-
-automap_overlay
-{
-  base = "DOOM"
-}

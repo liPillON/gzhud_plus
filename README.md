@@ -7,18 +7,18 @@ IndexFont replacement taken from [here](https://github.com/JNechaevsky/inter-doo
 ![README](https://raw.githubusercontent.com/liPillON/gzhud_plus/main/README.png)
 
 
-Features:
+## Features:
 - tweaked UsesAmmo/UsesSecondaryAmmo support
 - InventoryBar/SelectedInventory support
 - optional Level Stats (off by default)
 - hidden StatusBar in automap
 
 
-Limitations:
+## Limitations:
 - none that I know of
 
 
-Downloads:
+## Downloads:
 - [this](https://github.com/liPillON/gzhud_plus/releases/latest) is the latest release.
 - [this](https://github.com/liPillON/gzhud_plus/archive/refs/heads/main.zip) is the current repository snapshot.
 

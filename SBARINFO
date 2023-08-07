@@ -167,13 +167,11 @@ playerType DoomPlayer {
 
 
 ////////////////////////////////////////////////////////////////////////////////
-// FullScreen InventoryBar
-// provided in case a mod makes use of it
-StatusBar InventoryFullscreen, FullscreenOffsets
+// changes: reduced size, disabled bakground, tweaked positioning
+statusbar InventoryFullscreen
 {
-	DrawInventoryBar DOOM, AlwaysShowCounter, NoArtiBox, 1, gzpFNT_IDX, -100, -34, -93, -12, gzpCLR_GLD;
+	DrawInventoryBar DOOM, AlwaysShowCounter, NoArtiBox, 1, idIndexFontY, 222, 166, 230, 188, untranslated;
 }
-
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -181,9 +179,6 @@ StatusBar InventoryFullscreen, FullscreenOffsets
 // this is where the magic happens ;)
 StatusBar Fullscreen, FullscreenOffsets
 {
-	//InventoryItem
-	DrawSelectedInventory AlwaysShowCounter, gzpFNT_IDX, -100, -34, -93, -12, gzpCLR_GLD;
-
 	//health
 	DrawNumber 3, HUDFONT_DOOM, untranslated, health, DrawShadow(0,0), 45, -18;
 	inInventory PowerStrength {
@@ -220,21 +215,45 @@ StatusBar Fullscreen, FullscreenOffsets
 		//DrawImage WeaponIcon, -19, -10, center, 38, 14;
 	}
 
-	ifCvarInt gzpHUD_LevelInfo, 1, equal {
+	//InventoryItem
+	InventoryBarNotVisible { DrawSelectedInventory AlwaysShowCounter, idIndexFontY, 222, 166, 230, 188, untranslated; }
+
+	//optional level stats
+	ifCvarInt myhud_LevelStats, 1, equal {
 		//kills
-		DrawNumber 4, gzpFNT_IDX, gzpCLR_BLK, kills, -32, 3;
-		DrawString gzpFNT_IDX, gzpCLR_BLK, "/", -27, 3;
-		DrawNumber 4, gzpFNT_IDX, gzpCLR_BLK, monsters, -11, 3;
-		DrawString gzpFNT_IDX, gzpCLR_DRK, "K", -3, 3;
+		DrawString myIndexFont, untranslated, "K", 9, 144;
+		DrawNumber 3, myIndexFont, untranslated, kills, 23, 144;
+		DrawString myIndexFont, untranslated, "/", 29, 144;
+		DrawNumber 3, myIndexFont, untranslated, monsters, 43, 144;
 		//items
-		DrawNumber 4, gzpFNT_IDX, gzpCLR_BLK, items, -32, 11;
-		DrawString gzpFNT_IDX, gzpCLR_BLK, "/", -27, 11;
-		DrawNumber 4, gzpFNT_IDX, gzpCLR_BLK, totalItems, -11, 11;
-		DrawString gzpFNT_IDX, gzpCLR_DRK, "I", -3, 11;
+		DrawString myIndexFont, untranslated, "I", 9, 150;
+		DrawNumber 3, myIndexFont, untranslated, items, 23, 150;
+		DrawString myIndexFont, untranslated, "/", 29, 150;
+		DrawNumber 3, myIndexFont, untranslated, totalItems, 43, 150;
 		//secrets
-		DrawNumber 4, gzpFNT_IDX, gzpCLR_BLK, secrets, -32, 19;
-		DrawString gzpFNT_IDX, gzpCLR_BLK, "/", -27, 19;
-		DrawNumber 4, gzpFNT_IDX, gzpCLR_BLK, totalSecrets, -11, 19;
-		DrawString gzpFNT_IDX, gzpCLR_DRK, "S", -3, 19;
+		DrawString myIndexFont, untranslated, "S", 9, 156;
+		DrawNumber 3, myIndexFont, untranslated, secrets, 23, 156;
+		DrawString myIndexFont, untranslated, "/", 29, 156;
+		DrawNumber 3, myIndexFont, untranslated, totalSecrets, 43, 156;
+	}
+
+	//optional powerup timers
+	ifCvarInt myhud_PowerupTimers, 1, equal {
+		inInventory PowerLightAmp {
+			DrawString myIndexFont, untranslated, "LAMP", 141, 186;
+			DrawNumber 3, myIndexFont, untranslated, PowerupTime Infrared, 137, 192;
+		}
+		inInventory PowerIronFeet {
+			DrawString myIndexFont, untranslated, "SUIT", 159, 186;
+			DrawNumber 3, myIndexFont, untranslated, PowerupTime RadSuit, 155, 192;
+		}
+		inInventory PowerInvisibility {
+			DrawString myIndexFont, untranslated, "BLUR", 177, 186;
+			DrawNumber 3, myIndexFont, untranslated, PowerupTime BlurSphere, 173, 192;
+		}
+		inInventory PowerInvulnerable {
+			DrawString myIndexFont, untranslated, "INVL", 195, 186;
+			DrawNumber 3, myIndexFont, untranslated, PowerupTime InvulnerabilitySphere, 191, 192;
+		}
 	}
 }

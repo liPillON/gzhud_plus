@@ -2,7 +2,7 @@
 
 Tweaked variation of the GZDoom Fullscreen HUD, using SBARINFO.
 
-IndexFont replacement taken from [here](https://github.com/JNechaevsky/inter-doom/blob/master/src/base/doom-common.wad).
+IndexFont replacement taken from [here](https://github.com/3saster/fullscrn_huds/tree/master/fonts/oldfont).
 
 ![README](https://raw.githubusercontent.com/liPillON/gzhud_plus/main/README.png)
 

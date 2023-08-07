@@ -126,7 +126,7 @@ playerType DoomPlayer {
 	}
 
 	//optional level stats
-	ifCvarInt myhud_LevelStats, 1, equal {
+	ifCvarInt gzhudp_LevelStats, 1, equal {
 		//kills
 		DrawString myIndexFont, untranslated, "K", 6, 149;
 		DrawNumber 3, myIndexFont, untranslated, kills, 20, 149;
@@ -145,7 +145,7 @@ playerType DoomPlayer {
 	}
 
 	//optional powerup timers
-	ifCvarInt myhud_PowerupTimers, 1, equal {
+	ifCvarInt gzhudp_PowerupTimers, 1, equal {
 		inInventory PowerLightAmp {
 			DrawString myIndexFont, untranslated, "LAMP", 141, 155;
 			DrawNumber 3, myIndexFont, untranslated, PowerupTime Infrared, 137, 161;
@@ -227,7 +227,7 @@ statusbar fullscreen
 	InventoryBarNotVisible { DrawSelectedInventory AlwaysShowCounter, idIndexFontY, 222, 166, 230, 188, untranslated; }
 
 	//optional level stats
-	ifCvarInt myhud_LevelStats, 1, equal {
+	ifCvarInt gzhudp_LevelStats, 1, equal {
 		//kills
 		DrawString myIndexFont, untranslated, "K", 9, 144;
 		DrawNumber 3, myIndexFont, untranslated, kills, 23, 144;
@@ -246,7 +246,7 @@ statusbar fullscreen
 	}
 
 	//optional powerup timers
-	ifCvarInt myhud_PowerupTimers, 1, equal {
+	ifCvarInt gzhudp_PowerupTimers, 1, equal {
 		inInventory PowerLightAmp {
 			DrawString myIndexFont, untranslated, "LAMP", 141, 186;
 			DrawNumber 3, myIndexFont, untranslated, PowerupTime Infrared, 137, 192;

@@ -1,1 +1,2 @@
-user bool gzpHUD_LevelInfo = false;
+user bool gzhudp_LevelStats = false;
+user bool gzhudp_PowerupTimers = false;

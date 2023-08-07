@@ -1,11 +1,11 @@
-AddOptionMenu OptionsMenu       { SubMenu "GZDoomHUD+ Settings", gzpMNU_MAIN }
-AddOptionMenu OptionsMenuSimple { SubMenu "GZDoomHUD+ Settings", gzpMNU_MAIN }
+AddOptionMenu OptionsMenu       { SubMenu "gzHUD+ Settings", gzhudp_OptionMenu }
+AddOptionMenu OptionsMenuSimple { SubMenu "gzHUD+ Settings", gzhudp_OptionMenu }
 
 
-OptionMenu gzpMNU_MAIN
+OptionMenu gzhudp_OptionMenu
 {
-	Title "GZDoomHUD+"
-	StaticText "2023.03.08", Black
+	Title "gzHUD+"
+	StaticText "2023.08.08", Black
 	StaticText ""
 	StaticText "GZDoom Options", Gold
 	Option "Fullscreen HUD", screenblocks, gzFullscreenStatus
@@ -20,7 +20,8 @@ OptionMenu gzpMNU_MAIN
 	Option "Keep Aspect Ratio", hud_aspectscale, YesNo
 	StaticText ""
 	StaticText "MOD Options", Gold
-	Option "Show Level Info", gzpHUD_LevelInfo, YesNo
+	Option "Show Powerup Timers", gzhudp_PowerupTimers, YesNo
+	Option "Show Level Stats", gzhudp_LevelStats, YesNo
 }
 
 

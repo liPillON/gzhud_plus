@@ -1,5 +1,6 @@
 // reference: https://zdoom.org/wiki/SBARINFO
-// stock definition: $PROGDIR/gzdoom.pk3/sbarinfo/doom.txt
+//  defaults: $PROGDIR/gzdoom.pk3/sbarinfo/doom.txt
+
 
 // sets the status bar to the specified game
 // valid games are Doom, Heretic, Hexen, Strife, and None.
@@ -24,20 +25,145 @@ MonospaceFonts true, "0", center;
 resolution 320, 200;
 
 
+////////////////////////////////////////////////////////////////////////////////
+// changes: reduced size, tweaked positioning
+statusbar inventory
+{
+	drawinventorybar DOOM, AlwaysShowCounter, 1, idIndexFontY, 145, 169, 173, 191, untranslated;
+}
 
 ////////////////////////////////////////////////////////////////////////////////
-// standard StatusBar, used in the automap screen
-// we define it as EMPTY, so only stats and mapname will be displayed
-StatusBar AutoMap {}
+// changes:
+//  - Ammo1 count replaced with Berserk/WeaponIcon when a melee weapon is equipped
+//  - ammo tally replaced with AmmoCapacity indicator for custom PlayerClasses
+//  - Ammo2/Ammo2Capacity indicator for weapons that use them
+// - optional LevelStats and PowerupTimers widgets
+statusbar normal
+{
+	//background
+	drawimage "STBAR", 0, 168;
 
+	//ammo
+	UsesAmmo {
+		drawnumber 3, idStatusFont, untranslated, ammo1, 44, 171;
+		drawnumber 3, idIndexFontY, untranslated, ammo2, 43, 184;
+	} else {
+		inInventory PowerStrength {
+			DrawImage "PSTRA0", 24, 180, center, 24, 18;
+		} else {
+			DrawImage WeaponIcon, 24, 180, center, 36, 18;
+		}
+	}
 
+	//health
+	drawnumber 3, idStatusFont, untranslated, health, 90, 171;
+	drawimage "STTPRCNT", 90, 171;
 
-////////////////////////////////////////////////////////////////////////////////
-// standard StatusBar and InventoryBar, used when ScreenBlocks<=10
-// we leave both commented, so GZDoom will provide the stock resources
-//StatusBar Inventory {}
-//StatusBar Normal {}
+	//armor
+	drawnumber 3, idStatusFont, untranslated, armor, 221, 171;
+	drawimage "STTPRCNT", 221, 171;
 
+	//keys
+	drawswitchableimage keyslot 2 && 5, "nullimage", "STKEYS0", "STKEYS3", "STKEYS6", 239, 171;
+	drawswitchableimage keyslot 3 && 6, "nullimage", "STKEYS1", "STKEYS4", "STKEYS7", 239, 181;
+	drawswitchableimage keyslot 1 && 4, "nullimage", "STKEYS2", "STKEYS5", "STKEYS8", 239, 191;
+
+	//ammo tally
+playerType DoomPlayer {
+	playerClass Marine {
+		//PlayerType inherited from DoomPlayer, PlayerClass==Marine
+		//eg: Vanilla (actor DoomPlayer:PlayerPawn, DisplayName=Marine)
+		//eg: 2048guns (actor 2048Player:DoomPlayer:PlayerPawn, DisplayName=Marine, replaces DoomPlayer)
+		drawnumber 3, idIndexFontY, untranslated, ammo(Clip), 288, 173;
+		drawnumber 3, idIndexFontY, untranslated, ammo(Shell), 288, 179;
+		drawnumber 3, idIndexFontY, untranslated, ammo(RocketAmmo), 288, 185;
+		drawnumber 3, idIndexFontY, untranslated, ammo(Cell), 288, 191;
+		drawnumber 3, idIndexFontY, untranslated, ammocapacity(Clip), 314, 173;
+		drawnumber 3, idIndexFontY, untranslated, ammocapacity(Shell), 314, 179;
+		drawnumber 3, idIndexFontY, untranslated, ammocapacity(RocketAmmo), 314, 185;
+		drawnumber 3, idIndexFontY, untranslated, ammocapacity(Cell), 314, 191;
+
+	} else {
+		//PlayerType inherited from DoomPlayer, PlayerClass<>Marine
+		//eg: SuperCharge (actor TangoPlayer:DoomPlayer:PlayerPawn, DisplayName=Default, replaces DoomPlayer)
+		//eg: FinalDoomer (actor FDxxxPlayer:FDPlayerPawn:DoomPlayer:PlayerPawn, DisplayName=xxxGuy, replaces NOTHING)
+		inInventory Clip       { drawnumber 3, idIndexFontY, untranslated, ammo(Clip), 288, 173;               }
+		inInventory Shell      { drawnumber 3, idIndexFontY, untranslated, ammo(Shell), 288, 179;              }
+		inInventory RocketAmmo { drawnumber 3, idIndexFontY, untranslated, ammo(RocketAmmo), 288, 185;         }
+		inInventory Cell       { drawnumber 3, idIndexFontY, untranslated, ammo(Cell), 288, 191;               }
+		inInventory Clip       { drawnumber 3, idIndexFontY, untranslated, ammocapacity(Clip), 314, 173;       }
+		inInventory Shell      { drawnumber 3, idIndexFontY, untranslated, ammocapacity(Shell), 314, 179;      }
+		inInventory RocketAmmo { drawnumber 3, idIndexFontY, untranslated, ammocapacity(RocketAmmo), 314, 185; }
+		inInventory Cell       { drawnumber 3, idIndexFontY, untranslated, ammocapacity(Cell), 314, 191;       }
+	}
+
+} else {
+	//PlayerType NOT inherited from DoomPlayer
+	//BDLite (actor Doomer:PlayerPawn, DisplayName=Modern, replaces DoomPlayer)
+	inInventory Clip       { drawnumber 3, idIndexFontY, untranslated, ammo(Clip), 288, 173;               }
+	inInventory Shell      { drawnumber 3, idIndexFontY, untranslated, ammo(Shell), 288, 179;              }
+	inInventory RocketAmmo { drawnumber 3, idIndexFontY, untranslated, ammo(RocketAmmo), 288, 185;         }
+	inInventory Cell       { drawnumber 3, idIndexFontY, untranslated, ammo(Cell), 288, 191;               }
+	inInventory Clip       { drawnumber 3, idIndexFontY, untranslated, ammocapacity(Clip), 314, 173;       }
+	inInventory Shell      { drawnumber 3, idIndexFontY, untranslated, ammocapacity(Shell), 314, 179;      }
+	inInventory RocketAmmo { drawnumber 3, idIndexFontY, untranslated, ammocapacity(RocketAmmo), 314, 185; }
+	inInventory Cell       { drawnumber 3, idIndexFontY, untranslated, ammocapacity(Cell), 314, 191;       }
+}
+
+	//arms indicators
+	drawimage "STARMS", 104, 168;
+	drawswitchableimage weaponslot 2, "STGNUM2", "STYSNUM2", 111, 172;
+	drawswitchableimage weaponslot 3, "STGNUM3", "STYSNUM3", 123, 172;
+	drawswitchableimage weaponslot 4, "STGNUM4", "STYSNUM4", 135, 172;
+	drawswitchableimage weaponslot 5, "STGNUM5", "STYSNUM5", 111, 182;
+	drawswitchableimage weaponslot 6, "STGNUM6", "STYSNUM6", 123, 182;
+	drawswitchableimage weaponslot 7, "STGNUM7", "STYSNUM7", 135, 182;
+
+	//mugshot/inventory
+	drawselectedinventory alternateonempty, AlwaysShowCounter, idIndexFontY, 145, 169, 173, 191, untranslated
+	{
+		drawmugshot "STF", 5, 143, 168;
+	}
+
+	//optional level stats
+	ifCvarInt myhud_LevelStats, 1, equal {
+		//kills
+		DrawString myIndexFont, untranslated, "K", 6, 149;
+		DrawNumber 3, myIndexFont, untranslated, kills, 20, 149;
+		DrawString myIndexFont, untranslated, "/", 26, 149;
+		DrawNumber 3, myIndexFont, untranslated, monsters, 40, 149;
+		//items
+		DrawString myIndexFont, untranslated, "I", 6, 155;
+		DrawNumber 3, myIndexFont, untranslated, items, 20, 155;
+		DrawString myIndexFont, untranslated, "/", 26, 155;
+		DrawNumber 3, myIndexFont, untranslated, totalItems, 40, 155;
+		//secrets
+		DrawString myIndexFont, untranslated, "S", 6, 161;
+		DrawNumber 3, myIndexFont, untranslated, secrets, 20, 161;
+		DrawString myIndexFont, untranslated, "/", 26, 161;
+		DrawNumber 3, myIndexFont, untranslated, totalSecrets, 40, 161;
+	}
+
+	//optional powerup timers
+	ifCvarInt myhud_PowerupTimers, 1, equal {
+		inInventory PowerLightAmp {
+			DrawString myIndexFont, untranslated, "LAMP", 141, 155;
+			DrawNumber 3, myIndexFont, untranslated, PowerupTime Infrared, 137, 161;
+		}
+		inInventory PowerIronFeet {
+			DrawString myIndexFont, untranslated, "SUIT", 159, 155;
+			DrawNumber 3, myIndexFont, untranslated, PowerupTime RadSuit, 155, 161;
+		}
+		inInventory PowerInvisibility {
+			DrawString myIndexFont, untranslated, "BLUR", 177, 155;
+			DrawNumber 3, myIndexFont, untranslated, PowerupTime BlurSphere, 173, 161;
+		}
+		inInventory PowerInvulnerable {
+			DrawString myIndexFont, untranslated, "INVL", 195, 155;
+			DrawNumber 3, myIndexFont, untranslated, PowerupTime InvulnerabilitySphere, 191, 161;
+		}
+	}
+}
 
 
 ////////////////////////////////////////////////////////////////////////////////

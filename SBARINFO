@@ -20,8 +20,8 @@ MonospaceFonts true, "0", center;
 
 // keep "resolution 320, 200;" to let the hud be affected by GZDoom's scaling just like the stock StatusBar is
 // when in game, to avoid any pixel-scaling distortion, I would then suggest to either:
-//  - execute "hud_AspectScale true; hud_scale 6; vid_ScaleToHeight 1440"
-//  - execute "hud_AspectScale true; hud_scale 3; vid_ScaleToHeight 720"
+// - execute "hud_AspectScale true; hud_scale 6; vid_ScaleToHeight 1440"
+// - execute "hud_AspectScale true; hud_scale 3; vid_ScaleToHeight 720"
 resolution 320, 200;
 
 
@@ -34,9 +34,9 @@ statusbar inventory
 
 ////////////////////////////////////////////////////////////////////////////////
 // changes:
-//  - Ammo1 count replaced with Berserk/WeaponIcon when a melee weapon is equipped
-//  - ammo tally replaced with AmmoCapacity indicator for custom PlayerClasses
-//  - Ammo2/Ammo2Capacity indicator for weapons that use them
+// - Ammo1 count replaced with Berserk/WeaponIcon when a melee weapon is equipped
+// - ammo tally replaced with AmmoCapacity indicator for custom PlayerClasses
+// - Ammo2/Ammo2Capacity indicator for weapons that use them
 // - optional LevelStats and PowerupTimers widgets
 statusbar normal
 {
@@ -177,10 +177,10 @@ statusbar InventoryFullscreen
 ////////////////////////////////////////////////////////////////////////////////
 // changes:
 // - disabled fullscreen offsets
-// - switched counter/icons horizontal position for both Health and Ammo
+// - inverted counters and icons horizontal positioning for Health and Ammo
 // - switched ammo1/ammo2 indicators vertical position
 // - replaced medikit sprite with berserk pack when PowerStrength is inInventory
-// - health count and icon are displayed only if inInventory
+// - armor count and icon are displayed only if inInventory
 // - reworked InventoryBar and SelectedInventory appearance
 // - removed shadows from all DrawNumber calls
 // - tweaked KeySlots positioning

@@ -10,6 +10,7 @@ The font used for Stats/Timers is taken from [here](https://github.com/3saster/f
 
 
 ## Features:
+- no custom resources, so it should be compatible with any pwad overriding iwad's contents
 - tweaked some StatusBar elements (ammo indicator, ammo tally)
 - disabled fullscreen offsets for the HUD (benefit ultra-widescreen players)
 - removed any stbar/hud element from the Automap screen

@@ -34,10 +34,12 @@ statusbar inventory
 
 ////////////////////////////////////////////////////////////////////////////////
 // changes:
-// - Ammo1 count replaced with Berserk/WeaponIcon when a melee weapon is equipped
-// - ammo tally replaced with AmmoCapacity indicator for custom PlayerClasses
-// - Ammo2/Ammo2Capacity indicator for weapons that use them
+// - reworked InventoryBar and SelectedInventory appearance
+// - removed frags and other checks for gametype
 // - optional LevelStats and PowerupTimers widgets
+// - Berserk/WeaponIcon displayed instead of Ammo1 when a melee weapon is equipped
+// - Ammo2 indicator displayed when a weapon use it
+// - ammo tally for custom PlayerClasses shows only unmodded ammo types
 statusbar normal
 {
 	//background
@@ -176,15 +178,16 @@ statusbar InventoryFullscreen
 
 ////////////////////////////////////////////////////////////////////////////////
 // changes:
-// - disabled fullscreen offsets
-// - inverted counters and icons horizontal positioning for Health and Ammo
-// - switched ammo1/ammo2 indicators vertical position
-// - replaced medikit sprite with berserk pack when PowerStrength is inInventory
-// - armor count and icon are displayed only if inInventory
+// - optional LevelStats and PowerupTimers widgets
 // - reworked InventoryBar and SelectedInventory appearance
-// - removed shadows from all DrawNumber calls
+// - removed frags and other checks for gametype
+// - Berserk pack replaces the medikit, when PowerStrength is inInventory
+// - switched sprites/icons horizontal position, for Health and Ammo indicators
+// - switched ammo1/ammo2 indicators vertical position
+// - armor count and icon are displayed only if inInventory
+// - tweaked DrawShadow(x,y) offsets for health/armor/ammo1/ammo2 indicators
 // - tweaked KeySlots positioning
-// - removed frags count
+// - disabled fullscreen offsets
 statusbar fullscreen
 {
 	//health

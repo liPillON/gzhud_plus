@@ -188,7 +188,7 @@ statusbar InventoryFullscreen
 statusbar fullscreen
 {
 	//health
-	DrawNumber 3, idStatusFont, untranslated, health, 45, 182;
+	DrawNumber 3, idStatusFont, untranslated, health, DrawShadow(1,1), 45, 182;
 	inInventory PowerStrength {
 		DrawImage "PSTRA0", 59, 190, center, 22, 14;
 	} else {
@@ -197,7 +197,7 @@ statusbar fullscreen
 
 	//armor
 	InInventory BasicArmor, 1 {
-		DrawNumber 3, idStatusFont, untranslated, armor, 45, 164;
+		DrawNumber 3, idStatusFont, untranslated, armor, DrawShadow(1,1), 45, 164;
 		DrawImage ArmorIcon, 59, 172, center, 22, 14;
 	}
 
@@ -210,14 +210,14 @@ statusbar fullscreen
 	UsesSecondaryAmmo {
 		//current clip
 		DrawImage WeaponIcon, 308, 172, center, 38, 14;
-		DrawNumber 3, idStatusFont, untranslated, ammo1, 297, 164;
+		DrawNumber 3, idStatusFont, untranslated, ammo1, DrawShadow(1,1), 297, 164;
 		//current weapon
 		DrawImage AmmoIcon2, 308, 190, center, 22, 14;
-		DrawNumber 3, idStatusFont, untranslated, ammo2, 297, 182;
+		DrawNumber 3, idStatusFont, untranslated, ammo2, DrawShadow(1,1), 297, 182;
 	} else UsesAmmo {
 		//current weapon
 		DrawImage AmmoIcon1, 308, 190, center, 22, 14;
-		DrawNumber 3, idStatusFont, untranslated, ammo1, 297, 182;
+		DrawNumber 3, idStatusFont, untranslated, ammo1, DrawShadow(1,1), 297, 182;
 	} else {
 		//melee
 		DrawImage WeaponIcon, 288, 188, center, 40, 20;
@@ -229,20 +229,20 @@ statusbar fullscreen
 	//optional level stats
 	ifCvarInt gzhudp_LevelStats, 1, equal {
 		//kills
-		DrawString myIndexFont, untranslated, "K", 9, 144;
 		DrawNumber 3, myIndexFont, untranslated, kills, 23, 144;
 		DrawString myIndexFont, untranslated, "/", 29, 144;
 		DrawNumber 3, myIndexFont, untranslated, monsters, 43, 144;
+		DrawString myIndexFont, untranslated, "KILLS", 69, 144;
 		//items
-		DrawString myIndexFont, untranslated, "I", 9, 150;
 		DrawNumber 3, myIndexFont, untranslated, items, 23, 150;
 		DrawString myIndexFont, untranslated, "/", 29, 150;
 		DrawNumber 3, myIndexFont, untranslated, totalItems, 43, 150;
+		DrawString myIndexFont, untranslated, "ITEMS", 69, 150;
 		//secrets
-		DrawString myIndexFont, untranslated, "S", 9, 156;
 		DrawNumber 3, myIndexFont, untranslated, secrets, 23, 156;
 		DrawString myIndexFont, untranslated, "/", 29, 156;
 		DrawNumber 3, myIndexFont, untranslated, totalSecrets, 43, 156;
+		DrawString myIndexFont, untranslated, "SCRTS", 69, 156;
 	}
 
 	//optional powerup timers

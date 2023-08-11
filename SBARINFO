@@ -268,46 +268,7 @@ statusbar fullscreen
 
 
 ////////////////////////////////////////////////////////////////////////////////
-// basically the same content as fullscreen HUD
 statusbar automap
 {
-	//health
-	DrawNumber 3, idStatusFont, untranslated, health, 45, 182;
-	inInventory PowerStrength {
-		DrawImage "PSTRA0", 59, 190, center, 22, 14;
-	} else {
-		DrawImage "MEDIA0", 59, 190, center, 22, 14;
-	}
-
-	//armor
-	InInventory BasicArmor, 1 {
-		DrawNumber 3, idStatusFont, untranslated, armor, 45, 164;
-		DrawImage ArmorIcon, 59, 172, center, 22, 14;
-	}
-
-	//keys
-	DrawSwitchableImage KeySlot 2 && 5, "NullImage", "STKEYS0", "STKEYS3", "STKEYS6", 77, 191, center; //blu
-	DrawSwitchableImage KeySlot 3 && 6, "NullImage", "STKEYS1", "STKEYS4", "STKEYS7", 86, 191, center; //ylw
-	DrawSwitchableImage KeySlot 1 && 4, "NullImage", "STKEYS2", "STKEYS5", "STKEYS8", 95, 191, center; //red
-
-	//ammo
-	UsesSecondaryAmmo {
-		//current clip
-		DrawImage WeaponIcon, 308, 172, center, 38, 14;
-		DrawNumber 3, idStatusFont, untranslated, ammo1, 297, 164;
-		//current weapon
-		DrawImage AmmoIcon2, 308, 190, center, 22, 14;
-		DrawNumber 3, idStatusFont, untranslated, ammo2, 297, 182;
-	} else UsesAmmo {
-		//current weapon
-		DrawImage AmmoIcon1, 308, 190, center, 22, 14;
-		DrawNumber 3, idStatusFont, untranslated, ammo1, 297, 182;
-	} else {
-		//melee
-		DrawImage WeaponIcon, 288, 188, center, 40, 20;
-	}
-
-	//InventoryItem
-	InventoryBarNotVisible { DrawSelectedInventory AlwaysShowCounter, idIndexFontY, 222, 166, 230, 188, untranslated; }
 }
 

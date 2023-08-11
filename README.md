@@ -1,6 +1,6 @@
 # gzhud_plus
 
-Tweaked variation of the GZDoom Fullscreen HUD, using SBARINFO.
+Tweaked SBARINFO definitions for both GZDoom's StatusBar and FullscreenHUD.
 
 The font used for Stats/Timers is taken from [here](https://github.com/3saster/fullscrn_huds/tree/master/fonts/oldfont).
 
